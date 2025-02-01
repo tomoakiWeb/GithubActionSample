@@ -39,7 +39,7 @@ jobs:
             --relative-results \
             --disable-update-check \
             --quiet
-        continue-on-error: true
+        continue-on-error: false 
 
       - name: Comment on PR if Unused Code is Found
         if: ${{ failure() }}
