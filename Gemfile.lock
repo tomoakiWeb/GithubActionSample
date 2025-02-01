@@ -39,6 +39,8 @@ GEM
       faraday (>= 0.8)
     faraday-net_http (3.4.0)
       net-http (>= 0.5.0)
+    faraday-retry (2.2.1)
+      faraday (~> 2.0)
     git (1.19.1)
       addressable (~> 2.8)
       rchardet (~> 1.8)
@@ -74,6 +76,7 @@ PLATFORMS
 DEPENDENCIES
   danger
   danger-periphery
+  faraday-retry
 
 BUNDLED WITH
    2.4.19
