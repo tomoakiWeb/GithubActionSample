@@ -8,9 +8,3 @@ periphery.scan(
   disable_update_check: true,
   quiet: true
 )
-
-
-# PR にコメントを追加
-periphery.scan do |violation|
-  violation.message = "🚨 Periphery detected **unused code** in this PR! Please review and clean up unnecessary declarations."
-end
