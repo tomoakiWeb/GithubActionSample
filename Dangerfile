@@ -16,4 +16,3 @@ periphery.scan_all_files = true
 # 警告をエラーとして扱う
 periphery.warning_as_error = true
 
-end
