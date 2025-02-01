@@ -45,8 +45,8 @@ jobs:
             --quiet
         continue-on-error: true 
         
-      - name: Debug Periphery Output
-        run: cat periphery_output.json
+      # - name: Debug Periphery Output
+      #   run: cat periphery_output.json
         
       # - name: Run Danger
       #   env:
