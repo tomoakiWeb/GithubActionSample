@@ -6,7 +6,6 @@ periphery.scan(
   project: "GithubActionSample.xcodeproj",
   schemes: ["GithubActionSample"],
   clean_build: true,
-  exclude_targets: ["Tests"],
   build_args: "-sdk iphonesimulator"
 )
 
