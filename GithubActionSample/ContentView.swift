@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct A {
-    let a = 2
+    let a = 3
 }
 
 struct ContentView: View {
