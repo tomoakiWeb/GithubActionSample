@@ -23,12 +23,12 @@ jobs:
 
       - name: Show Xcode Project Info
         run: xcodebuild -list -json -project GithubActionSample.xcodeproj
-
-      - name: Clean Xcode Build
-        run: xcodebuild clean -project GithubActionSample.xcodeproj
-
-      - name: Install Periphery
-        run: brew install peripheryapp/periphery/periphery
+        
+      - name: Install Dependencies
+        run: |
+          brew install peripheryapp/periphery/periphery
+          gem install bundler
+          bundle install
 
       - name: Run Periphery
         run: |
