@@ -8,6 +8,7 @@
 import SwiftUI
 
 func testaaxss(){}
+func huga(){}
 
 struct ContentView: View {
     var body: some View {
