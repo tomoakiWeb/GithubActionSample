@@ -11,9 +11,9 @@ jobs:
   periphery:
     runs-on: macos-15
     permissions:
-     pull-requests: write  # PR にコメントを書く権限
-     statuses: write       # PR のステータスを更新する権限
-     contents: read
+      pull-requests: write  # PR にコメントを書く権限
+      statuses: write       # PR のステータスを更新する権限
+      contents: read
     timeout-minutes: 10
     steps:
       - name: Checkout Repository
@@ -42,14 +42,23 @@ jobs:
             --disable-update-check \
             --quiet
         continue-on-error: false 
+
       - name: Run Danger
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bundle exec danger --verbose
 
+      - name: Debug GitHub Token Permissions
+        run: |
+          echo "GitHub Token: $GITHUB_TOKEN"
+          gh auth status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Comment on PR if Unused Code is Found
         if: ${{ failure() }}
-        uses: thollander/actions-comment-pull-request@v2
+        uses: mktcode/pr-comment@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           message: "🚨 Periphery detected **unused code** in this PR! Please review and clean up unnecessary declarations."
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
