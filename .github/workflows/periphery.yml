@@ -9,7 +9,7 @@ on:
 
 jobs:
   periphery:
-    runs-on: macos-latest
+    runs-on: macos-15
     permissions:
       pull-requests: write
       contents: read
