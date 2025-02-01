@@ -30,7 +30,12 @@ jobs:
           echo "Periphery Version: $(periphery version)"
 
       - name: Run Periphery
-        run: periphery scan --format github-actions --relative-results
+        run: |
+          periphery scan \
+            --project GithubActionSample.xcodeproj \ 
+            --schemes GithubActionSample \ 
+            --format github-actions \
+            --relative-results
         continue-on-error: true # 解析エラーがあっても後続処理を実行
 
       - name: Comment on PR if Unused Code is Found
