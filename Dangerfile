@@ -16,7 +16,4 @@ periphery.scan_all_files = true
 # 警告をエラーとして扱う
 periphery.warning_as_error = true
 
-# PR にコメントを追加
-periphery.scan do |violation|
-  violation.message = "🚨 Periphery detected **unused code** in this PR! Please review and clean up unnecessary declarations."
 end
