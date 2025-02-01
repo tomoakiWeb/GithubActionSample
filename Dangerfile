@@ -5,6 +5,7 @@ periphery.binary_path = "/opt/homebrew/bin/periphery"
 periphery.scan(
   project: "GithubActionSample.xcodeproj",
   schemes: ["GithubActionSample"],
+  targets: ["GithubActionSample"], 
   clean_build: true,
   build_args: "-sdk iphonesimulator"
 )
