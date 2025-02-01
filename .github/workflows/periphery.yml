@@ -42,23 +42,14 @@ jobs:
             --disable-update-check \
             --quiet
         continue-on-error: false 
-
       - name: Run Danger
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bundle exec danger --verbose
 
-      - name: Debug GitHub Token Permissions
-        run: |
-          echo "GitHub Token: $GITHUB_TOKEN"
-          gh auth status
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Comment on PR if Unused Code is Found
         if: ${{ failure() }}
-        uses: mktcode/pr-comment@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: thollander/actions-comment-pull-request@v2
         with:
           message: "🚨 Periphery detected **unused code** in this PR! Please review and clean up unnecessary declarations."
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
