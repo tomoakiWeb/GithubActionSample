@@ -44,10 +44,18 @@ jobs:
             --disable-update-check \
             --quiet
         continue-on-error: true 
+        
+      - name: Debug Periphery Output
+        run: cat periphery_output.json
+        
+      # - name: Run Danger
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: bundle exec danger --verbose
 
       - name: Run Danger
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bundle exec danger --verbose
 
       - name: Debug GitHub Token Permissions
