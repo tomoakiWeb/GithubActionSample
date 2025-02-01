@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # すべての履歴を取得（PR のベースブランチを正しく取得するため）
 
       - name: Select Xcode Version
         run: sudo xcode-select -s /Applications/Xcode.app
