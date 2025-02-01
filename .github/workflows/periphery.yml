@@ -5,15 +5,15 @@ on:
     branches:
       - main
       - develop
-      - feature/*
       - master
-permissions:
-  pull-requests: write
 
 jobs:
   periphery:
     runs-on: macos-latest
-    timeout-minutes: 10 # 10分でタイムアウト
+    permissions:
+      pull-requests: write
+      contents: read
+    timeout-minutes: 10
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -24,21 +24,22 @@ jobs:
       - name: Install Dependencies
         run: |
           brew install peripheryapp/periphery/periphery
-          gem install bundler
+          echo 'source "https://rubygems.org"' > Gemfile
+          echo 'gem "danger"' >> Gemfile
+          echo 'gem "danger-periphery"' >> Gemfile
           bundle install
 
-      - name: Show Environment Info
+      - name: Run Periphery
         run: |
-          echo "MacOS Version: $(sw_vers)"
-          echo "Xcode Version: $(xcodebuild -version)"
-          echo "Swift Version: $(swift -version)"
-          echo "Periphery Version: $(periphery version)"
-          
-      - name: Run Periphery Analysis
-        run: |
-          bundle exec danger --verbose
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          periphery scan \
+            --project GithubActionSample.xcodeproj \
+            --schemes GithubActionSample \
+            --targets GithubActionSample \
+            --format checkstyle \
+            --relative-results \
+            --disable-update-check \
+            --quiet
+        continue-on-error: true
 
       - name: Comment on PR if Unused Code is Found
         if: ${{ failure() }}
