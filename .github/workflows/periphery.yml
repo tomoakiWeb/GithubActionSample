@@ -33,10 +33,9 @@ jobs:
         run: |
           periphery scan \
             --project GithubActionSample.xcodeproj \ 
-            --schemes GithubActionSample \ 
             --format github-actions \
             --relative-results
-        continue-on-error: true # 解析エラーがあっても後続処理を実行
+        continue-on-error: false 
 
       - name: Comment on PR if Unused Code is Found
         if: ${{ failure() }}
