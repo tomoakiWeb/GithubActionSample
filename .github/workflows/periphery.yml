@@ -21,13 +21,14 @@ jobs:
       - name: Select Xcode Version
         run: sudo xcode-select -s /Applications/Xcode.app
 
-      - name: Install Dependencies
-        run: |
-          brew install peripheryapp/periphery/periphery
-          echo 'source "https://rubygems.org"' > Gemfile
-          echo 'gem "danger"' >> Gemfile
-          echo 'gem "danger-periphery"' >> Gemfile
-          bundle install
+      - name: Show Xcode Project Info
+        run: xcodebuild -list -json -project GithubActionSample.xcodeproj
+
+      - name: Clean Xcode Build
+        run: xcodebuild clean -project GithubActionSample.xcodeproj
+
+      - name: Install Periphery
+        run: brew install peripheryapp/periphery/periphery
 
       - name: Run Periphery
         run: |
