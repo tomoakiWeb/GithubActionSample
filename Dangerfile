@@ -1,5 +1,10 @@
-periphery.binary_path = "/opt/homebrew/bin/periphery"
-periphery.scan
+periphery.scan(
+  project: "GithubActionSample.xcodeproj",  # ← `project` を明示的に指定
+  schemes: ["GithubActionSample"],
+  targets: ["GithubActionSample"], 
+  clean_build: true,
+  build_args: "-sdk iphonesimulator"
+)
 
 
 # すべてのファイルに対して警告を表示
