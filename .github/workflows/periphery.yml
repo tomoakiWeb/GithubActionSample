@@ -11,8 +11,9 @@ jobs:
   periphery:
     runs-on: macos-15
     permissions:
-      pull-requests: write
-      contents: read
+     pull-requests: write  # PR にコメントを書く権限
+     statuses: write       # PR のステータスを更新する権限
+     contents: read
     timeout-minutes: 10
     steps:
       - name: Checkout Repository
