@@ -1,0 +1,40 @@
+name: Periphery (Detect Unused Code in PR)
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - feature/*
+
+jobs:
+  periphery:
+    runs-on: macos-latest
+    timeout-minutes: 10 # 10 分でタイムアウト
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode Version
+        run: sudo xcode-select -s /Applications/Xcode_16.app
+
+      - name: Install Periphery
+        run: brew install peripheryapp/periphery/periphery
+
+      - name: Show Environment Info
+        run: |
+          echo "MacOS Version: $(sw_vers)"
+          echo "Xcode Version: $(xcodebuild -version)"
+          echo "Swift Version: $(swift -version)"
+          echo "Periphery Version: $(periphery version)"
+
+      - name: Run Periphery
+        run: periphery scan --format github-actions --relative-results
+        continue-on-error: true # 解析エラーがあっても後続処理を実行
+
+      - name: Comment on PR if Unused Code is Found
+        if: ${{ failure() }}
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: "🚨 Periphery detected **unused code** in this PR! Please review and clean up unnecessary declarations."
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
