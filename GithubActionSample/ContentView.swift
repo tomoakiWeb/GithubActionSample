@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct A {
-    let a = 28
-}
+func test(){}
 
 struct ContentView: View {
     var body: some View {
