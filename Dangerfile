@@ -1,4 +1,4 @@
-periphery.binary_path = "./Pods/Periphery/periphery"
+periphery.binary_path = "/opt/homebrew/bin/periphery"
 periphery.scan
 
 
