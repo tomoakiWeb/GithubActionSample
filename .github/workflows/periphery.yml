@@ -41,6 +41,10 @@ jobs:
             --disable-update-check \
             --quiet
         continue-on-error: false 
+      - name: Run Danger
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bundle exec danger --verbose
 
       - name: Comment on PR if Unused Code is Found
         if: ${{ failure() }}
