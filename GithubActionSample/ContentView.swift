@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+struct A {}
+
 struct ContentView: View {
     var body: some View {
         VStack {
