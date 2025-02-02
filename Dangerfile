@@ -4,4 +4,6 @@ periphery.scan(
   schemes: ["GithubActionSample"],
   targets: ["GithubActionSample"], 
   clean_build: true
-)
+) do |violation|
+  violation.message = "Pay attention please! #{violation.message}"
+end
