@@ -10,7 +10,6 @@ periphery.warning_as_error = true
 periphery.scan(
   project: "GithubActionSample.xcodeproj",
   schemes: ["GithubActionSample"],
-  targets: ["GithubActionSample"], 
   clean_build: true,
   build_args: "-sdk iphonesimulator"
 ) do |violation|
