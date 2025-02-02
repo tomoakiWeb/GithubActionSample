@@ -24,6 +24,13 @@ jobs:
       - name: Select Xcode Version
         run: sudo xcode-select -s /Applications/Xcode.app
 
+      - name: Cache Mint Packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.mint
+          key: mint-${{ runner.os }}-${{ hashFiles('Mintfile') }}
+          restore-keys: mint-${{ runner.os }}-
+
       - name: Show Xcode Project Info
         run: xcodebuild -list -json -project GithubActionSample.xcodeproj
         
@@ -33,9 +40,6 @@ jobs:
           mint bootstrap
           gem install bundler
           bundle install
-          
-      - name: Set Periphery Path
-        run: echo "PERIPHERY_PATH=$(mint which periphery)" >> $GITHUB_ENV
 
       - name: Run Danger
         env:
