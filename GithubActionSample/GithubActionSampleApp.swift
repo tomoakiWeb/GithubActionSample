@@ -15,3 +15,8 @@ struct GithubActionSampleApp: App {
         }
     }
 }
+
+func aaa() {
+    let b= "bbb"
+    print("aaa")
+}
