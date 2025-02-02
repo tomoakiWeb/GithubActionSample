@@ -27,9 +27,13 @@ jobs:
         
       - name: Install Dependencies
         run: |
-          brew install peripheryapp/periphery/periphery
+          brew install mint
+          mint bootstrap
           gem install bundler
           bundle install
+          
+      - name: Set Periphery Path
+        run: echo "PERIPHERY_PATH=$(mint which periphery)" >> $GITHUB_ENV
 
       - name: Run Danger
         env:
