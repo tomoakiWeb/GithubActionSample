@@ -6,6 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		322A64B02D4F9B2F00852033 /* Periphery */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 322A64B32D4F9B2F00852033 /* Build configuration list for PBXAggregateTarget "Periphery" */;
+			buildPhases = (
+				322A64B42D4F9B5600852033 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Periphery;
+			packageProductDependencies = (
+			);
+			productName = Periphery;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXContainerItemProxy section */
 		322A64762D4E60D100852033 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -184,6 +200,9 @@
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = 322A64642D4E60CF00852033;
 					};
+					322A64B02D4F9B2F00852033 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 				};
 			};
 			buildConfigurationList = 322A64602D4E60CF00852033 /* Build configuration list for PBXProject "GithubActionSample" */;
@@ -195,6 +214,9 @@
 			);
 			mainGroup = 322A645C2D4E60CF00852033;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3291881A2D4FB60700CAC793 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 322A64662D4E60CF00852033 /* Products */;
 			projectDirPath = "";
@@ -203,6 +225,7 @@
 				322A64642D4E60CF00852033 /* GithubActionSample */,
 				322A64742D4E60D100852033 /* GithubActionSampleTests */,
 				322A647E2D4E60D100852033 /* GithubActionSampleUITests */,
+				322A64B02D4F9B2F00852033 /* Periphery */,
 			);
 		};
 /* End PBXProject section */
@@ -230,6 +253,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		322A64B42D4F9B5600852033 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mint run peripheryapp/periphery scan --project GithubActionSample.xcodeproj --schemes GithubActionSample --targets GithubActionSample --format xcode\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		322A64612D4E60CF00852033 /* Sources */ = {
@@ -518,6 +561,24 @@
 			};
 			name = Release;
 		};
+		322A64B12D4F9B2F00852033 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XD2W2H38WX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		322A64B22D4F9B2F00852033 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XD2W2H38WX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -557,7 +618,27 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		322A64B32D4F9B2F00852033 /* Build configuration list for PBXAggregateTarget "Periphery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				322A64B12D4F9B2F00852033 /* Debug */,
+				322A64B22D4F9B2F00852033 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3291881A2D4FB60700CAC793 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 322A645D2D4E60CF00852033 /* Project object */;
 }

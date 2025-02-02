@@ -1,10 +1,6 @@
-//
-//  ContentView.swift
-//  GithubActionSample
-//
-//  Created by 三浦知明 on 2025/02/01.
-//
-
+import Foundation
+import AVKit
+import Combine
 import SwiftUI
 
 struct ContentView: View {
@@ -17,8 +13,29 @@ struct ContentView: View {
         }
         .padding()
     }
+    
+    private func unusedFunction() {
+        let unusedVariable = 42
+        print("This is never called")
+    }
 }
 
 #Preview {
     ContentView()
+}
+
+
+protocol Greeter {
+    func greet(name: String)
+    func farewell(name: String) // 'name' is unused
+}
+
+class InformalGreeter: Greeter {
+    func greet(name: String) {
+        print("Sup " + name + ".")
+    }
+
+    func farewell(name: String) { // 'name' is unused
+      print("Cya.")
+    }
 }
