@@ -3,6 +3,5 @@ periphery.scan(
   project: "GithubActionSample.xcodeproj",
   schemes: ["GithubActionSample"],
   targets: ["GithubActionSample"], 
-  clean_build: true,
-  index_store_path: "DerivedData/Index.noindex/DataStore"
+  clean_build: true
 )
