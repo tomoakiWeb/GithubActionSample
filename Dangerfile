@@ -15,7 +15,7 @@ periphery.scan(
   clean_build: true,
   build_args: "-sdk iphonesimulator",
   format: "json"
-)
-
-# スキャン結果を確認
-system("cat periphery_output.json")
+) do |violation|
+  # 'sender' が未使用という警告を除外
+  !violation.message.match(/Parameter 'sender' is unused/)
+end
