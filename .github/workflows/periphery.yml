@@ -15,22 +15,25 @@ jobs:
       statuses: write       # PR のステータスを更新する権限
       contents: read
     timeout-minutes: 10
+
+    env:
+      MINT_PATH: .mint/lib
+      MINT_LINK_PATH: .mint/bin
+      
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Select Xcode Version
-        run: sudo xcode-select -s /Applications/Xcode.app
-
       - name: Cache Mint Packages
         uses: actions/cache@v4
         with:
-          path: ~/.mint
-          key: mint-${{ runner.os }}-${{ hashFiles('Mintfile') }}
-          restore-keys: mint-${{ runner.os }}-
+          path: .mint
+          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
+          restore-keys: |
+            ${{ runner.os }}-mint-
 
-      - name: Show Xcode Project Info
-        run: xcodebuild -list -json -project GithubActionSample.xcodeproj
+      - name: Select Xcode Version
+        run: sudo xcode-select -s /Applications/Xcode.app
         
       - name: Install Dependencies
         run: |
