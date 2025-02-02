@@ -17,7 +17,7 @@ struct ContentView: View {
     private func unusedFunction() {
         let unusedVariable = 42
         print("This is never called")
-        print("This is never called222")
+        print("This is never called222555")
     }
 }
 
