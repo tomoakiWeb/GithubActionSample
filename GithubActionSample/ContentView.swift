@@ -8,7 +8,7 @@
 import SwiftUI
 
 func testaaxss(){}
-func hugaaazzaassasz(){}
+func hugaaazzaasssasz(){}
 
 struct ContentView: View {
     var body: some View {
