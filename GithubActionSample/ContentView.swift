@@ -24,4 +24,4 @@ struct ContentView: View {
 }
 
 
-func test(){}
+func fuga(){}
