@@ -17,6 +17,11 @@ struct ContentView: View {
         }
         .padding()
     }
+    
+    func unusedFunction() {
+        let unusedVariable = 42
+        print("This is never called")
+    }
 }
 
 #Preview {
@@ -24,6 +29,17 @@ struct ContentView: View {
 }
 
 
-func fugaa(){
-    print("a")
+protocol Greeter {
+    func greet(name: String)
+    func farewell(name: String) // 'name' is unused
+}
+
+class InformalGreeter: Greeter {
+    func greet(name: String) {
+        print("Sup " + name + ".")
+    }
+
+    func farewell(name: String) { // 'name' is unused
+      print("Cya.")
+    }
 }
