@@ -3,5 +3,6 @@ periphery.scan(
   project: "GithubActionSample.xcodeproj",
   schemes: ["GithubActionSample"],
   targets: ["GithubActionSample"], 
-  clean_build: true
+  clean_build: true,
+  retain_public: false
 )
