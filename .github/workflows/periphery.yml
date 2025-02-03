@@ -47,5 +47,6 @@ jobs:
 
       - name: Run Danger
         env:
+          echo "Periphery Binary Path: $PERIPHERY_PATH"
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bundle exec danger --verbose
