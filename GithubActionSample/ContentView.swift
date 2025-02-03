@@ -16,7 +16,7 @@ struct ContentView: View {
     
     private func unusedFunction() {
         let unusedVariable = 42
-        print("unused")
+        print("unused1111")
     }
 }
 
