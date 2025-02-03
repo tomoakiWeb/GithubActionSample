@@ -39,7 +39,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-mint-
 
-      - name: Install mint depenencies
+      - name: Install depenencies
         run: |
           mint bootstrap
           gem install bundler
@@ -60,7 +60,7 @@ jobs:
 
       - name: Set Periphery Binary Path
         run: |
-          echo "PERIPHERY_PATH=$(mint which periphery | tr -d '\n')" >> $GITHUB_ENV
+          echo "PERIPHERY_PATH=$(mint which periphery | tail -n 1 | tr -d '\n')" >> $GITHUB_ENV
 
       - name: Run Danger
         env:
