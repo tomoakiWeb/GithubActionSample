@@ -45,25 +45,11 @@ jobs:
           gem install bundler
           bundle install
 
-      - name: Cache Mint Packages2
-        uses: actions/cache@v4
-        with:
-          path: .mint
-          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
-          restore-keys: |
-            ${{ runner.os }}-mint-
-        
-      - name: Debug Mint Installation
-        run: |
-          mint list
-          mint which periphery
-
       - name: Set Periphery Binary Path
         run: |
           echo "PERIPHERY_PATH=$(mint which periphery | tail -n 1 | tr -d '\n')" >> $GITHUB_ENV
 
       - name: Run Danger
         env:
-          echo "Periphery Binary Path: $PERIPHERY_PATH"
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bundle exec danger --verbose
