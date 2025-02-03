@@ -41,6 +41,11 @@ jobs:
           mint bootstrap
           gem install bundler
           bundle install
+      - name: Debug Mint Installation
+        run: |
+          mint list
+          mint which periphery
+
 
       - name: Set Periphery Binary Path
         run: echo "PERIPHERY_PATH=$(mint which periphery)" >> $GITHUB_ENV
