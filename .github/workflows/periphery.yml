@@ -31,7 +31,7 @@ jobs:
         run: |
           brew install mint
 
-      - name: Cache Mint Packages
+      - name: Cache Mint Packages1
         uses: actions/cache@v4
         with:
           path: .mint
@@ -44,15 +44,23 @@ jobs:
           mint bootstrap
           gem install bundler
           bundle install
+
+      - name: Cache Mint Packages2
+        uses: actions/cache@v4
+        with:
+          path: .mint
+          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
+          restore-keys: |
+            ${{ runner.os }}-mint-
         
       - name: Debug Mint Installation
         run: |
           mint list
           mint which periphery
 
-
       - name: Set Periphery Binary Path
-        run: echo "PERIPHERY_PATH=$(mint which periphery)" >> $GITHUB_ENV
+        run: |
+          echo "PERIPHERY_PATH=$(mint which periphery | tr -d '\n')" >> $GITHUB_ENV
 
       - name: Run Danger
         env:
