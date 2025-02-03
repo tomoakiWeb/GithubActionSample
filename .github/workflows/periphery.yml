@@ -41,6 +41,7 @@ jobs:
           mint bootstrap
           gem install bundler
           bundle install
+          
       - name: Debug Mint Installation
         run: |
           mint list
